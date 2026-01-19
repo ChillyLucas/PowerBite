@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerBite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FFFFFF;
+      color: #111111;
+      line-height: 1.6;
+    }
+    header {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #FFFFFF;
+      padding: 140px 20px;
+      text-align: center;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(242,194,0,0.85), rgba(255,201,51,0.85));
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    header h1 { font-size: 3rem; margin-bottom: 10px; font-weight: 800; }
+    header p { font-size: 1.2rem; opacity: 0.95; }
+
+    nav {
+      background: linear-gradient(135deg, #F2C200, #FFC933);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px; /* chudszy pasek */
+      box-shadow: 0 10px 25px rgba(250, 204, 21, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav strong { display: flex; align-items: center; }
+    nav strong img {
+      height: 120px; /* logo nadal większe, ale mieści się w pasku */
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+}
+    nav a { text-decoration: none; color: #0F0F0F; margin-left: 20px; font-weight: 500; }
+
+    section { padding: 70px 0; max-width: 1200px; margin: auto; text-align: center; }
+
+    .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card { background: #FFFFFF; border-radius: 20px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-6px); }
+
+    .features { width: 100%; display: flex; flex-direction: column; gap: 30px; }
+    .features-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0 40px; }
+    .features-texts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0 40px; }
+
+    .tgtg { margin-top: 50px; display: grid; grid-template-columns: 200px 1fr; align-items: center; gap: 40px; padding: 0 60px; }
+    .tgtg-logo {
+      width: 200px;
+      height: 200px;
+      border-radius: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent; /* usunięcie białego tła */
+    }
+    .tgtg-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      mix-blend-mode: multiply; /* usuwa białe tło wizualnie */
+}
+    .tgtg-text { text-align: left; }
+
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+    .feature-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #E5E7EB;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+}
+.feature-image[data-bg] {
+      background-size: cover;
+      background-position: center;
+}
+.feature-image[data-bg]:not([data-bg=""]) {
+      background-image: attr(data-bg url);
+}
+
+    /* CONTACT */
+    #contact { background: #FACC15; max-width: none; }
+    .locations { display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap; }
+    .location-card { background: #FFFFFF; border-radius: 16px; padding: 15px; width: 260px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+    .map {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #E5E7EB;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .phone { margin-top: 30px; font-size: 1.2rem; font-weight: 600; text-align: center; }
+    footer { background: #000000; color: #FFFFFF; text-align: center; padding: 20px; font-size: 0.9rem; }
+  /* AUTO APPLY DATA-BG IMAGES */
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.feature-image[data-bg]').forEach(el => {
+        const bg = el.getAttribute('data-bg');
+        if (bg && bg !== 'LINK_DO_OBRAZU_1' && bg !== 'LINK_DO_OBRAZU_2' && bg !== 'LINK_DO_OBRAZU_3') {
+          el.style.backgroundImage = `url('${bg}')`;
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
+<nav>
+  <strong>
+    <img src="https://lh3.googleusercontent.com/d/1W4FJMCQ-kCtMUGYp_cRcsaSzyKIvI9wM" alt="PowerBite logo" />
+  </strong>
+  <div>
+    <a href="#menu">Menu</a>
+    <a href="#about">O nas</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+</nav>
+
+<header>
+  <h1>PowerBite</h1>
+  <p>Zdrowa kuchnia. Prosty skład. Nowoczesny smak.</p>
+</header>
+
+<section id="menu" style="text-align:center; margin-top:-30px;">
+  <h2>Nasze Menu</h2>
+  <div style="display:flex; flex-direction:column; gap:40px; align-items:center;">
+    <img src="https://lh3.googleusercontent.com/d/1xAnCiP16On9fuPIfbqM5TYPnqbGuxC8y" alt="Menu PowerBite – strona 1" style="max-width:90%; border-radius:22px; box-shadow:0 18px 36px rgba(0,0,0,0.15);" />
+    <img src="https://lh3.googleusercontent.com/d/1KfdhZokhST2i1v2FaNRmkQ90JHKvUgnr" alt="Menu PowerBite – strona 2" style="max-width:90%; border-radius:22px; box-shadow:0 18px 36px rgba(0,0,0,0.15);" />
+  </div>
+</section>
+
+<section id="about" style="max-width:none; text-align:center; margin-top:-40px;">
+  <h2>O nas</h2>
+  <div class="features">
+    <div class="features-images">
+      <div class="feature-image" data-bg="https://lh3.googleusercontent.com/d/1QMppkgJaAZ8cQMJVkyBMJcMK86H9HYfv"></div>
+      <div class="feature-image" data-bg="https://lh3.googleusercontent.com/d/1jZh5GjFyzSi3JD5V_E1Tyxnw84IlO7Hj"></div>
+      <div class="feature-image" data-bg="https://lh3.googleusercontent.com/d/1WxgeMrwWe9H18gt3F3pjgPqZc8eA-UZF"></div>
+    </div>
+    </div>
+    <div class="features-texts">
+      <div>
+        <h3>Dlaczego my</h3>
+        <p>Stawiamy na jakość, prostotę i energię.</p>
+      </div>
+      <div>
+        <h3>Szybko i lekko</h3>
+        <p>Idealne tempo dla aktywnego miasta.</p>
+      </div>
+      <div>
+        <h3>Fit filozofia</h3>
+        <p>Zbilansowane posiłki bez kompromisów.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tgtg">
+    <div class="tgtg-logo">
+      <img src="https://lh3.googleusercontent.com/d/1qX2axvGvY3YMDPloc4A5QrnNS3gnNOL1" alt="Too Good To Go Logo">
+    </div>
+    <div class="tgtg-text">
+      <h3>Too Good To Go</h3>
+      <p>Współpracujemy z Too Good To Go, aby realnie ograniczać marnowanie żywności. Niesprzedane, pełnowartościowe posiłki trafiają do klientów w niższej cenie – bo dobra energia nie powinna się marnować.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Nasze lokale w Warszawie</h2>
+  <div class="locations">
+    <div class="location-card">
+      <img class="map" src="https://lh3.googleusercontent.com/d/1PtnntvRmSiW7BcN09EMSYdbFLCifR1US" alt="Marszałkowska – mapa">
+      <h4>Śródmieście</h4>
+      <p>ul. Marszałkowska 64 (obok McFIT)</p>
+    </div>
+    <div class="location-card">
+      <img class="map" src="https://lh3.googleusercontent.com/d/1-cbkk4ezDJJv-2pBOmfW8iodYw_47FNJ" alt="Puławska – mapa">
+      <h4>Mokotów</h4>
+      <p>ul. Puławska 145 (obok Zdrofit)</p>
+    </div>
+    <div class="location-card">
+      <img class="map" src="https://lh3.googleusercontent.com/d/1bRXE_bxUhcqEtpwQszVTM6qLtZbPhjC6" alt="Prosta – mapa">
+      <h4>Wola</h4>
+      <p>ul. Prosta 51 (obok CityFit)</p>
+    </div>
+  </div>
+  <div class="phone">☎ +48 600 123 456</div>
+</section>
+
+<footer>
+  2026 PowerBite. Wszystkie prawa zastrzeżone.
+</footer>
+
+</body>
+</html>
